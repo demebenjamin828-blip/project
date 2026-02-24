@@ -1,0 +1,243 @@
+/* =========================================
+   RESET & BASES
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto; 
+    background: radial-gradient(circle at top right, #065f46, #022c22) fixed;
+    color: #e2e8f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+/* =========================================
+   THROBBER (BARRE DE CHARGEMENT)
+   ========================================= */
+.throbber-container {
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: none; 
+    overflow: hidden;
+}
+
+.show-loader { display: block !important; }
+
+.throbber-line {
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #facc15, transparent);
+    position: absolute;
+    left: -50%;
+    animation: moveThrobber 1.5s infinite linear;
+    box-shadow: 0 0 15px #facc15;
+}
+
+@keyframes moveThrobber {
+    0% { left: -50%; }
+    100% { left: 110%; }
+}
+
+/* =========================================
+   CARTE PRINCIPALE (GLASSMORPHISM)
+   ========================================= */
+.glass-card {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 32px;
+    padding: 60px 40px;
+    max-width: 550px; /* Réduit pour les formulaires d'inscription */
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden; 
+    margin: auto;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   FORMULAIRES D'INSCRIPTION & INPUTS
+   ========================================= */
+.modern-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.input-group input, 
+.input-group select {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px 16px;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus, 
+.input-group select:focus {
+    outline: none;
+    border-color: #facc15;
+    background: rgba(250, 204, 21, 0.05);
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.1);
+}
+
+/* Bouton d'inscription spécial */
+.btn-submit {
+    background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+    color: #022c22;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(250, 204, 21, 0.3);
+    filter: brightness(1.1);
+}
+
+/* Alertes de succès ou d'erreur */
+.alert {
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.alert.error { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+.alert.success { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+
+/* =========================================
+   LIENS DE NAVIGATION (BAS DE PAGE)
+   ========================================= */
+.auth-footer {
+    margin-top: 25px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.auth-footer a {
+    color: #facc15;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   STYLE POUR LA GRID ACCUEIL (PORTAL CARDS)
+   ========================================= */
+.selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.portal-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 30px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s ease;
+}
+
+.portal-card:hover {
+    transform: translateY(-8px);
+    border-color: #facc15;
+    background: rgba(255, 255, 255, 0.06);
+}
+/* Force la couleur du texte dans les listes déroulantes */
+select option {
+    background-color: #ffffff !important; /* Fond blanc pur */
+    color: #022c22 !important;            /* Texte vert très foncé (Emerald) */
+    padding: 10px;
+}
+
+/* Améliore l'apparence du menu lui-même */
+select {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    cursor: pointer;
+}
+/* =========================================
+   STYLE POUR LA ZONE D'OBSERVATION
+   ========================================= */
+.modern-form textarea {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px 16px;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    font-family: inherit; /* Pour garder Jakarta Sans */
+    resize: none; /* Empêche l'utilisateur de déformer la boîte */
+    transition: all 0.3s ease;
+}
+
+.modern-form textarea:focus {
+    outline: none;
+    border-color: #facc15;
+    background: rgba(250, 204, 21, 0.05);
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.1);
+}
+
+/* Optionnel : Ajustement pour les petits écrans */
+@media (max-width: 480px) {
+    .glass-card {
+        padding: 40px 20px;
+    }
+}
